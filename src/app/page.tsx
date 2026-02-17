@@ -8,7 +8,7 @@ export default function HomePage() {
           If we cannot cite it, we do not answer.
         </p>
 
-        <form action="/search" className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <form action="search" className="mt-6 flex flex-col gap-3 sm:flex-row">
           <input
             name="q"
             placeholder="Try: lactose free pancakes"
