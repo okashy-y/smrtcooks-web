@@ -1,0 +1,41 @@
+name: Unpack zip into repo
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install unzip
+        run: sudo apt-get update && sudo apt-get install -y unzip
+
+      - name: Unpack smrtcooks-web.zip into repo root
+        run: |
+          rm -rf _unpack_tmp
+          mkdir -p _unpack_tmp
+          unzip -o smrtcooks-web.zip -d _unpack_tmp
+          # The zip contains a top folder like smrtcooks-web/..., copy its contents to repo root
+          TOP_DIR=$(find _unpack_tmp -maxdepth 1 -type d -name "smrtcooks-web*" | head -n 1)
+          if [ -z "$TOP_DIR" ]; then
+            echo "Top folder not found inside zip" && exit 1
+          fi
+          rsync -a "$TOP_DIR"/ ./
+          rm -rf _unpack_tmp
+
+      - name: Remove zip after unpack (optional)
+        run: rm -f smrtcooks-web.zip
+
+      - name: Commit unpacked files
+        run: |
+          git config user.name "smrtcooks-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Unpack project files" || echo "Nothing to commit"
+          git push
