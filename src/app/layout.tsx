@@ -1,3 +1,4 @@
+import Link from "next/link";
 import "./globals.css";
 
 export const metadata = {
@@ -16,8 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div className="text-sm text-zinc-300">Everyone deserves a cookie.</div>
             </div>
             <nav className="flex gap-2">
-              <a href="/" className="rounded-lg border border-zinc-800 px-3 py-2 text-sm hover:bg-zinc-900">Home</a>
-              <a href="/admin" className="rounded-lg border border-zinc-800 px-3 py-2 text-sm hover:bg-zinc-900">Admin</a>
+              <Link href="/" className="rounded-lg border border-zinc-800 px-3 py-2 text-sm hover:bg-zinc-900">Home</Link>
+              <Link href="/admin" className="rounded-lg border border-zinc-800 px-3 py-2 text-sm hover:bg-zinc-900">Admin</Link>
             </nav>
           </header>
 
