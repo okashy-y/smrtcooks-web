@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "updated_at": "2026-02-17",
+  "docs": [
+    {
+      "id": "demo-who",
+      "domain": "www.who.int",
+      "url": "https://www.who.int/",
+      "title": "World Health Organization",
+      "text": "This is a demo placeholder document. Replace with verified source text you have permission to store."
+    }
+  ]
+}
