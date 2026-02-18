@@ -1,4 +1,4 @@
-# SMRTCOOKS Static (No database, no backend)
+# SMRTCOOKS
 
 Designed for locked networks where DB providers and ingestion pipelines are blocked.
 
